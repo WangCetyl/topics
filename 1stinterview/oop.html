@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>oop</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<!-- 注意script中type写上text/javascript否则有时候不能体现javascript函数类 -->
+	<script >
+		// 类的声明
+		function Animal() {
+			this.name ='name';
+		};
+
+		// ES6中的class声明
+		class Animal2 {
+			constructor () {
+				this.name =name;
+			};
+		};
+		// 实例化类的对象
+		console.log(new Animal(),new Animal2());
+		// 借助构造函数实现继承,这种方法的缺点是如果父类所有属性，方法全部在构造函数中，就全部继承了，但是如果还有属性或方法在原型对象链中则无法继承。
+		function Parent1() {
+			this.name = 'parent1';
+		}
+
+		function Child1() {
+			Parent1.call(this);//在此也可以使用apply调用，
+			this.type='child1';
+		}
+		console.log(new Child1);
+        //这种方法的缺点是如果父类所有属性，方法全部在构造函数中，就全部继承了，但是如果还有属性或方法在原型对象链中则无法继承。
+		Parent1.prototype.say = function() {};
+		//该继承途径使得SAY方法无法继承，结果报错
+		//console.log(new Child1().say());
+
+		// 借助原型链实现继承
+		function Parent2() {
+			this.name ='parent2';
+			this.play =[1,2,3];
+		}
+		function Child2() {
+			this.type ='child2';
+		}
+
+		Child2.prototype = new Parent2();
+
+		console.log(Child2);
+		console.log(new Child2().__proto__);
+		console.log(Child2.__proto__);
+
+		s1 = new Child2();
+		s2 = new Child2();
+		console.log(s1.play,s2.play);
+		s1.play.push(4);
+		// 如下所示，使用原型链这种方法，任何一个实例化对象对属性进行修改，将会使同一个上级对象实例化的所有
+		// 对象相同属性均改变
+		console.log(s1.play,s2.play);
+
+		// 所以第三种组合方式诞生了
+		function Parent3() {
+			this.name = 'parent3';
+			this.play =[1,2,3];
+		}
+		function Child3 () {
+			Parent3.call(this);
+			this.type ='child3';
+		}
+		Child3.prototype = new Parent3();
+
+		s3 = new Child3();
+		s4 = new Child3();
+
+		s3.play.push(4);
+
+		console.log(s3.play,s4.play)
+		//鉴于以上方法使用了两次new 所以可以改良如下写法
+		function Parent4() {
+			this.name = 'parent4';
+			this.play =[1,2,3];
+		}
+		function Child4 () {
+			Parent4.call(this);
+			this.type ='child4';
+		}
+		Child4.prototype = Parent4.prototype;
+
+		s5 = new Child4();
+		s6 = new Child4();
+
+		s5.play.push(4);
+
+		console.log(s5.play,s6.play);
+		console.log(s5,s6);
+		console.log(s5 instanceof Child4,s5 instanceof Parent4);
+		console.log(s5.__proto__.constructor);
+		console.log(s5.constructor);
+		console.log(Child4.__proto__.constructor);
+		console.log(Child4.constructor);
+
+		//组合继承优化2
+		function Parent5() {
+			this.name = 'parent5';
+			this.play =[1,2,3];
+		}
+		function Child5 () {
+			Parent5.call(this);
+			this.type ='child5';
+		}
+		Child5.prototype = Object.create(Parent5.prototype);
+		Child5.__proto__.constructor = Child5;
+
+		s7 = new Child5();
+		s8 = new Child5();
+
+		s7.play.push(4);
+
+		console.log(s7.play,s8.play);
+		console.log(s7,s8);
+		console.log(s7 instanceof Child5,s7 instanceof Parent5);
+		console.log(s7.constructor);
+		console.log(Child5.constructor);
+	
+	</script>
+</body>
+</html>

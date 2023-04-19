@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ajax</title>
+</head>
+<body>
+	
+</body>
+	<script src="">
+		util.json = function (options) {
+			var opt = {
+				url:'',
+				type:'get',
+				data:{},
+				success:function () {},
+				err:   function() {},
+			};
+
+			util.extend (opt,options);
+			if(opt.urr) {
+				var xhr = XMLHeepRequest ? XMLHttpRequest(): new window.ActiveXObject('Miscrosoft.XMLHTTP');
+				var data = opt.data,
+					url =opt.url,
+					type = opt.type.toUpperCase(),
+					dataArr = [];
+				for (var k in data) {
+					dataArr.push (k + '+' + data[k]);
+				}
+				if (type==='GET') {
+					url = url + '?' + dataArr.join('&');
+					xhr.open(tpye,url.replace(/\?$/g,''),true);
+					xhr.send();
+				}
+				if (type==='POST') {
+					xhr.open(tpye,url,true);
+					xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+					xhr.send(dataArr.join('&'));
+				}
+				xhr.onload = function () {
+					if (xhr.status ===200||xhr.status ===304||xhr.status ===206) {
+						var res;
+						if(opts.success && opt.success instanceof Function) {
+							res = xhr.responseText;
+							if(typeof res ==='string') {
+								res = JSON.parse(res);
+								opt.success.call(xhr,res);
+							}
+
+						}else {
+							if (opt.err && opt.error instanceof Function) {
+								opt.error.call(xhr,res);
+							}
+						}
+					}
+				}
+			}
+		}
+	</script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>原型链</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		//第一种方式:字面量
+		var o1 = {name:'o1'};
+		var o11 = new Object({name:'o11'});
+		//第二种方式:通过构造函数
+		var M = function(name) {this.name = name};
+		var o3 = new M('o3');
+		//第三种方式：Object.create
+		var p = {name:'p'};
+		var o4 = Object.create(p);
+		M.prototype.say = function() {
+			console.log('say hi');
+		};
+		o5 = new M('o5');
+		console.log(o1);　　　　
+	　　console.log(o11);
+	　　console.log(o3);
+	　　console.log(o4);
+	　　console.log(o5);
+		o3.say();
+		o5.say();
+
+		var new2 = function (func) {				//newy运算符工作的原理
+	    var o = Object.create(func.prototype); 　　 //创建对象
+	    var k = func.call(o);　　　　　　　　　　　　　//改变this指向，把结果付给k
+	    if (typeof k === 'object') {　　　　　　　　　//判断k的类型是不是对象
+	        return k;　　　　　　　　　　　　　　　　　 //是，返回k
+	    } else {
+	        return o;　　　　　　　　　　　　　　　　　 //不是返回返回构造函数的执行结果
+	    }
+	}    
+	</script>
+</body>
+</html>

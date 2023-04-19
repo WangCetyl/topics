@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>title</title>
+    <style>
+    	* {
+    		padding: 0; 
+    		margin: 0;
+    	}
+      /*  body {
+            width: 100%;
+            height:100%;
+        }*/
+       /* .restore {
+            padding: 0;
+            margin:0;
+            border: none;
+            font-size: 12px;
+            background: yellowgreen;
+            height:40px;
+            width: 40px;
+            color:#fff;
+            float: left;
+            line-height: 40px;
+            text-align: center;
+        }*/
+    	.ul {
+    		height: 40px;
+            width: 800px;
+    		list-style: none;
+    		/*overflow: hidden;*/
+    		margin:0px auto;
+    	}
+    	.move {
+    		float: left;
+    		background: yellowgreen;
+    		height:40px;
+    		width: 40px;
+    		margin-left:2px;
+            line-height: 40px;
+            text-align: center;
+            color:#fff;
+            position: relative;
+            cursor:pointer;
+    	}
+    </style>
+	
+</head>
+<body>
+    <!-- <button class='restore'>恢复</button> -->
+    <ul class="ul">
+    	<li class="move">10</li>
+    	<li class="move">11</li>
+    	<li class="move">12</li>
+    	<li class="move">13</li>
+    	<li class="move">14</li>
+    	<li class="move">15</li>
+    	<li class="move">16</li>
+    	<li class="move">17</li>
+    	<li class="move">18</li>
+    	<li class="move">19</li>
+        <li class="move">20</li>
+        <li class="move">21</li>
+        <li class="move">22</li>
+        <li class="move">23</li>
+        <li class="move">24</li>
+        <li class="move">25</li>
+    </ul>
+</body>
+
+<script src="./007递归应用封装版附件.js">
+
+</script>
+<script>
+    // console.log(window)
+   move('li','300')
+</script>
+
+</html>

@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="Keywords" content="">
+    <link rel="stylesheet" href="">
+    <script src=""></script> 
+    <style media="screen">
+        html * {
+            padding: 0;
+            margin: 0;
+        }
+        .container {
+        	display: flex;   
+        	justify-content: space-between;
+        }
+		section {
+			
+			margin-right: 20px;
+		}
+		article {
+			width: 200px;
+			height: 200px;
+			background: blue;
+		}
+		div {
+			width: 100px;
+			height: 100px;
+			background: yellow;
+		}
+    </style>
+    
+</head>
+
+<body>
+	<div class="container">
+		
+		<!-- 父盒子的高度宽度 必须要设置具体的值 table-cell的高度随着内容的变换而变化 从而使得son的高度设置无效-->
+	    <section class="tab1">
+	    	<style>
+	    		.tab1father {
+	    			display: table;
+	    		}
+	    		.tab1son {
+	    			display:table-cell;
+	    			text-align: center;
+	    			vertical-align: middle; 
+	    		}
+	    	</style>
+	    	<article class="tab1father">
+	    		<div class="tab1son"> 
+	    				table show
+	    		</div>
+	    	</article>
+	    </section>
+
+		<!-- 第二种内容盒子必须设置宽高，但是不需要考虑宽高 -->
+	    <section class="abs1">
+	    	<style>
+	    		.abs1father {
+	    			position: relative;
+	    		}
+	    		.abs1son {
+	    			position: absolute; 
+	    			top: 0;
+	    			left: 0;
+	    			bottom: 0;
+	    			right: 0;
+	    			margin: auto;
+					text-align: center;
+					display: -webkit-box;
+	                -webkit-box-orient: horizontal;
+	                -webkit-box-pack: center;
+	                -webkit-box-align: center;
+
+	    		}
+	    	</style>
+	    	<article class="abs1father">
+	    		<div class="abs1son"> 
+	    				absolute top absolute top
+	    		</div>
+	    	</article>
+	    </section>
+
+		<!-- 第三种必须知道到内容盒子的宽高可以使用的 -->
+	    <section class="abs2">
+	    	<style>
+	    		.abs2father {
+	    			position: relative;
+	    		}
+	    		.abs2son {
+	    			position: absolute; 
+	    			top: 50%;
+	    			left: 50%;
+	    			/* 上移高得一半长度 */
+	    			margin-top: -50px;
+	    			/* 左移宽的一半长度 */
+	    			margin-left: -50px;
+					text-align: center;
+					display: -webkit-box;
+	                -webkit-box-orient: horizontal;
+	                -webkit-box-pack: center;
+	                -webkit-box-align: center;
+
+	    		}
+	    	</style>
+	    	<article class="abs2father">
+	    		<div class="abs2son"> 
+	    				absolute2 top absolute2 top
+	    		</div>
+	    	</article>
+	    </section>
+
+		<!-- 第四种不在乎内容盒子的宽高可以使用的 但是兼容性不好 -->
+	    <section class="abs3">
+	    	<style>
+	    		.abs3father {
+	    			position: relative;
+	    		}
+	    		.abs3son {
+	    			position: absolute; 
+	    			top: 50%;
+	    			left: 50%;
+	    			transform: translate(-50%,-50%);
+					text-align: center;
+					display: -webkit-box;
+	                -webkit-box-orient: horizontal;
+	                -webkit-box-pack: center;
+	                -webkit-box-align: center;
+
+	    		}
+	    	</style>
+	    	<article class="abs3father">
+	    		<div class="abs3son"> 
+	    				absolute3 top absolute3 top
+	    		</div>
+	    	</article>
+	    </section>
+
+	    <!-- 第五种flex 但是兼容性不好 -->
+	    <section class="flex1">
+	    	<style>
+	    		.flex1father {
+	    			display: flex;
+	    			align-items: center;
+	    			justify-content: center; 
+	    		}
+	    		.flex1son {
+					text-align: center;
+					display: -webkit-box;
+	                -webkit-box-orient: horizontal;
+	                -webkit-box-pack: center;
+	                -webkit-box-align: center;
+
+	    		}
+	    	</style>
+	    	<article class="flex1father">
+	    		<div class="flex1son"> 
+	    				flex flex
+	    				flex flexflex flexflex flexflex flex
+	    		</div>
+	    	</article>
+	    </section>
+		 <!-- 第五种flex 但是兼容性不好 -->
+	    <section id="js">
+	    	<!-- <style>
+	    		#jsfather {
+	    			display: flex;
+	    			align-items: center;
+	    			justify-content: center; 
+	    		}
+	    		#jsson {
+					text-align: center;
+					display: -webkit-box;
+	                -webkit-box-orient: horizontal;
+	                -webkit-box-pack: center;
+	                -webkit-box-align: center;
+
+	    		}
+	    	</style> -->
+	    	<article id="jsfather">
+	    		<div id="jsson"> 
+	    			this is js
+	    		</div>
+	    	</article>
+	    	<script >
+	    		let JsF = document.getElementById('jsfather')
+	    		let JsS = document.getElementById('jsson')
+	    		// JsS.innerText = JsF.getBoundingClientRect().x + ',' +JsF.getBoundingClientRect().y + '  ' + JsS.getBoundingClientRect().x + ',' + JsS.getBoundingClientRect().y
+	    		JsS.innerText = JsF.offsetHeight+ ',' +JsF.offsetTop + ',' + JsF.offsetWidth +'  ' + JsS.offsetHeight + ',' + JsS.offsetTop+ ',' + JsS.offsetWidth
+	    		JsF.style.overflow = 'hidden'
+	    		JsS.style.marginTop = (JsF.offsetHeight -JsS.offsetHeight)/2 + 'px'
+	    		JsS.style.marginLeft = (JsF.offsetWidth -JsS.offsetWidth)/2 + 'px'
+	    		
+	    		// 这是第二种绝对定位  		
+	    		// JsF.style.position = 'relative'
+	    		// JsS.style.position = 'absolute'
+	    		// JsS.style.top = (JsF.offsetHeight -JsS.offsetHeight)/2 + 'px'
+	    		// JsS.style.left =(JsF.offsetWidth -JsS.offsetWidth)/2 + 'px'
+	    	</script>
+	    </section>
+
+
+	</div>
+
+
+
+	
+
+
+</body>
+</html>

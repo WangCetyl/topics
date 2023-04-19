@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>Jquery LazyLoad</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="apple-mobile-web-app-capable" content="no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="renderer" content="webkit">
+	<meta name="description" content="">
+	<meta name="Keywords" content="">
+    <link rel="stylesheet" href="">
+    <script src=""></script> 
+    <style>
+    	* {
+    		padding: 0px;
+    		margin: 0px;
+    	}
+    	body {
+    		height: 2000px;
+    	}
+    	.imgBox {
+    		 width: 1000px;
+		     padding: 10px;
+		     overflow: hidden;
+		     background: #bbb;
+		     margin: 300px auto 0;
+		     /* float: left; */
+		     /* margin-right: 10px; */
+
+    	}
+    	.imgBox>img {
+    		width: 100%;
+    	}
+    </style> 
+	
+</head>
+
+<body>
+	<div class="imgBox" id="imgBox1">
+		<img id="img1" src="" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<!-- <div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div>
+	<div class="imgBox">
+		<img src="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg" alt="" data-img ="https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/10785/29/7960/170141/5c2f3af1E9349e5ef/eea5ecbaedd5ec18.jpg!cr_1125x549_0_72!q70.jpg.dpg">
+	</div> -->
+
+</body>
+<script src="./jquery-3.3.1.min.js"></script>
+<script src="./zhuFengInterview5.js"></script>
+</html>

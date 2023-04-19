@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Event</title>
+	<style>
+		#ev {
+			width: 300px;
+			height: 100px;
+			background: #14F619;
+			color: #133CF5;
+			text-align: center;
+			line-height: 100px;
+			margin: 50px auto;
+		}
+		#ev1 {
+			width: 300px;
+			height: 100px;
+			background: blue;
+			color: red;
+			text-align: center;
+			line-height: 100px;
+			margin: 50px auto;
+		}
+	</style>
+</head>
+<body>
+	<div id="ev">
+		目标元素
+	</div>
+	<div id="ev1">
+		目标元素1
+	</div>
+	<script>
+		var ev = document.getElementById('ev');
+		var ev1 = document.getElementById('ev1');
+		//true是捕获阶段触发，false则冒泡
+		window.addEventListener('click',function(e) {
+			console.log('window captrue');
+		},true);
+
+		document.addEventListener('click',function(e) {
+			console.log('document capture');
+		},true );
+
+		document.documentElement.addEventListener('click',function(e){
+			console.log('html capture');
+		},true);
+
+		document.body.addEventListener('click',function (e) {
+			console.log('body capture');
+		},true);
+
+		ev.addEventListener('click',function (e) {
+			console.log('ev capture');
+		},true);
+
+		window.addEventListener('click',function(e) {
+			console.log('window captrue1');
+		},false);
+
+		document.addEventListener('click',function(e) {
+			console.log('document capture1');
+		},false );
+
+		document.documentElement.addEventListener('click',function(e){
+			console.log('html capture1');
+		},false);
+
+		document.body.addEventListener('click',function (e) {
+			console.log('body capture1');
+		},false);
+
+		ev1.addEventListener('click',function (e) {
+			console.log('ev capture1');
+		},false);
+
+		var eve = new Event('test');
+		ev.addEventListener('test',function(){
+			console.log('test dispatch');
+		});
+			ev.dispatchEvent(eve);		
+		// setInterval(function(){
+		// 	ev.dispatchEvent(eve);
+		// },1000);
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cubic</title>
+    <style lang="text/css">
+        * {
+            padding:0;
+            margin: 0;
+        }
+        body {
+            height: 600px;
+            width: 1000px;
+        }
+        div {
+            width: 201px;
+            height: 201px;
+            border:1px solid red;
+            position: relative;
+            top:50%;
+            margin-top: -100px;
+            left: 50%;
+            margin-left: -100px;
+            perspective: 300px;
+            /* overflow: hidden; */
+        }
+        p {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+        }
+        /* 前 */
+        p:nth-child(1) {
+            background:rgba(233, 0, 128,0.2);
+            /* transform:rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px) */
+            transform:translateZ(100px)
+        }
+        /* 后 */
+        p:nth-child(2) {
+            background:rgba(120, 0, 233,0.2);
+            /* transform: translateZ(-100px); */
+            transform: rotateX(180deg) translateZ(100px);
+        }
+        /* 左 */
+        p:nth-child(3) {
+            background:rgba(21, 22, 22, 0.2);
+            /* transform: rotateY(90deg) translateX(-100px); */
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        /* 右？ */
+        p:nth-child(4) {
+            background:rgba(0, 233, 117,0.2);
+            /* transform: rotateY(90deg) translateX(100px); */
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        /* 上 */
+        p:nth-child(5) {
+            background:rgba(233, 66, 0,0.2);
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        /* 下 */
+        p:nth-child(6) {
+            background:rgba(0, 233, 233,0.2);
+            /* transform: rotateX(90deg) translateY(100px); */
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="cubic">
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+        <p></p>
+    </div>
+</body>
+</html>

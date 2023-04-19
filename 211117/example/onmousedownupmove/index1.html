@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*防止出现滚动条*/
+        html,body {
+            height: 100%;
+            overflow: hidden;
+        }
+        #box1 {
+           height: 20px; 
+           width: 50px;
+           background-color: blueviolet; 
+           position: absolute;
+           top: 0px;
+           left:0px;
+           text-align: center;
+           line-height: 20px;
+        }     
+        #box2 {
+           height: 200px; 
+           width: 400px;
+           background-color: red; 
+           position: absolute;
+           top: 200px;
+           left:300px;
+           text-align: center;
+           line-height: 100px;
+        }      
+       
+    </style>
+</head>
+<body>
+    <div id="box1">拖拽</div>
+    <div id="box2">阻碍盒子</div>
+</body>
+
+ <script src="collision.js"></script>
+
+</html>

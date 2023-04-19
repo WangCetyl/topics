@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="Keywords" content="">
+    <link rel="stylesheet" href="">
+    <script src=""></script> 
+    <style media="screen">
+        html * {
+            padding: 0;
+            margin: 0;
+        }
+        section {
+            margin-bottom: 20px;
+        }
+        section article div {
+            min-height: 100px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <section class="float">
+        <style media="screen">
+           .left {
+                float: left;
+                width: 300px;
+                background: red;
+            }
+            .right {
+                float: right; 
+                width: 300px;
+                background: blue;
+            }
+            .middle {
+                background: green;
+                text-align: center; 
+            }
+
+        </style>
+        <article class="left-middle-right">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="middle">
+                <h1>浮动三栏布局</h1>
+                <span>这里是三栏布局中间部分</span>
+            </div>
+        </article>
+    </section>
+
+    <section class="absolute">
+        <style media="screen">
+            .a-left-middle-right {
+                position: relative;
+            } 
+            .left {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 300px;
+                background: red;
+            }
+            .right {
+                position: absolute; 
+                top: 0;
+                right: 0;
+                width: 300px;
+                background: blue;
+            }
+            .middle {
+                background: green;
+                text-align: center; 
+            }
+
+        </style>
+        <article class="a-left-middle-right">
+            <div class="left"></div>
+            <div class="right"></div>
+            <div class="middle">
+                <h1>绝对定位三栏布局</h1>
+                <span>这里是绝对定位三栏布局中间部分</span>
+            </div>
+        </article>
+    </section>
+
+    <section class="flex">
+        <style media="screen">
+            .flex-left-middle-right {
+                /* margin-top: 110px; */
+                display: flex;
+                justify-content: space-between; 
+            } 
+            .fleft {
+
+                width: 300px;
+                background: red;
+            }
+            .fright {
+                width: 300px;
+                background: blue;
+            }
+            .fmiddle {
+                flex: 1;
+                background: green;
+                text-align: center; 
+            }
+
+        </style>
+        <article class="flex-left-middle-right">
+            <div class="fleft"></div>
+            <div class="fmiddle">
+                <h1>flex三栏布局</h1>
+                <span>这里是flex三栏布局中间部分</span>
+            </div>
+            <div class="fright"></div>
+        </article>
+
+    </section>
+
+    <section class="table">
+        <style>
+            .ta-left-middle-right {
+                display: table;
+                width: 100%;
+                height: 100px;
+            }
+            .ta-left-middle-right>div {
+                display: table-cell;
+            }
+            .ta-left {
+
+                width: 300px;
+                background: red;
+            }
+            .ta-right {
+                width: 300px;
+                background: blue;
+            }
+            .ta-middle {
+               
+                background: green;
+                text-align: center; 
+            }
+        </style>
+        <article class="ta-left-middle-right">
+            <div class="ta-left"></div>
+            <div class="ta-middle">
+                <h1>table三栏布局</h1>
+                <span>这里是table三栏布局中间部分</span>
+
+            </div>
+            <div class="ta-right"></div>
+            
+        </article>
+    </section>
+
+
+    <section class="grid"> 
+        <style>
+            .grid-left-middle-right {
+                display: grid; 
+                width: 100%; 
+                grid-template-rows: 100px;
+                grid-template-columns: 300px auto 300px;
+            }
+
+            .grid-left {
+                background: red;
+            }
+            .grid-right {
+                background: blue;
+            }
+            .grid-middle {
+                background: green;
+                text-align: center; 
+            }
+        </style>
+
+ 
+        <article class="grid-left-middle-right">
+            <div class="grid-left"></div>
+            <div class="grid-middle">
+                <h1>grid三栏布局</h1>
+                <span>这里是grid三栏布局中间部分</span>
+            </div>
+            <div class="grid-right"></div>
+        </article>
+    </section>
+</body>
+</html>
